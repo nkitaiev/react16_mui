@@ -1,0 +1,23 @@
+.back-button {
+    display: flex;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.back-button > span {
+    margin-left: 10px;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.Select:focus {
+    border-radius: 50px;
+}
+
+/*.MuiFormControl-root .MuiInputBase-root{*/
+/*    border-radius: 50px;*/
+/*}*/

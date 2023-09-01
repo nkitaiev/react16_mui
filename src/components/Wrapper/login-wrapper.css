@@ -1,0 +1,11 @@
+.page-layout {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
