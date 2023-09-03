@@ -9,6 +9,12 @@ const theme = createTheme({
     primary: {
       main: "#390879",
     },
+    inputBorders: {
+      main: "#E1E6EC",
+    },
+    inputText: {
+      main: "#6F7C8E",
+    },
   },
 });
 

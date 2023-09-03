@@ -3,33 +3,50 @@ import {
   Box,
   Button,
   Typography,
-  InputAdornment,
   TextField,
-  Link,
-  Grid,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
 } from "@material-ui/core";
-import { ArrowBack, PhoneIphone, AccountCircle } from "@material-ui/icons";
+import { ArrowBack } from "@material-ui/icons";
 import "./login-bussiness.css";
 import { LoginWrapper } from "../Wrapper/LoginWrapper";
 import { makeStyles } from "@material-ui/core/styles";
 import { CustomCheckbox } from "./components/CustomCheckbox";
-
-// const customStyles = makeStyles({
-//   formWrapper: {
-//     maxWidth: 460,
-//     display: "flex",
-//     flexGrow: 1,
-//     flexDirection: "column",
-//     backgroundColor: "white",
-//     padding: "50px 75px",
-//   },
-// });
+import { DividerWithText } from "../CustomDivider/DividerWithText";
 
 const customStyles = makeStyles({
+  inputClasses: {
+    paddingBottom: "16px",
+    "& input": {
+      padding: "14px 18px",
+    },
+    "& fieldset.MuiOutlinedInput-notchedOutline": {
+      borderRadius: "50px",
+    },
+    "& label.Mui-focused": {
+      fontStyle: "normal",
+      fontWeight: "400",
+      textTransform: "uppercase",
+    },
+  },
+  inputLabelClasses: {
+    transform: "translate(14px, 16px) scale(1)",
+    fontSize: "13px",
+    fontWeight: "100",
+    fontStyle: "italic",
+  },
+  selectClasses: {
+    paddingBottom: "16px",
+    padding: "14px",
+    paddingRight: "32px",
+  },
+  selectRootClasses: {
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderRadius: "50px",
+    },
+  },
   formWrapper: {
     maxWidth: 460,
     display: "flex",
@@ -45,35 +62,25 @@ const customStyles = makeStyles({
     height: "36px",
     borderRadius: "100%",
   },
-  selectStyles: {
-    padding: "14px",
-    paddingRight: "32px",
-  },
   checkboxesBlock: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     gap: 10,
+    paddingBottom: "16px",
   },
-  root: {
-    color: "#0A0412",
+  button: {
+    borderRadius: "50px",
+    padding: "11px 0",
+    fontSize: "14px",
     fontWeight: 800,
-    fontSize: "16px",
-    letterSpacing: "-0.29px",
-  },
-});
-
-const styles = (theme) => ({
-  input: {
-    color: "red",
-    padding: 0,
+    textTransform: "none",
+    marginTop: "32px",
   },
 });
 
 export const LoginBusiness = () => {
   const classes = customStyles();
-  const inputClasses = styles();
 
-  // const selectClasses = useSelectStyles();
   const [typeOfHotel, setTypeOfHotel] = React.useState("");
 
   const handleChange = (event) => {
@@ -105,40 +112,24 @@ export const LoginBusiness = () => {
           <span>Sign up as a</span>
           <span> Business</span>
         </div>
-        <Typography classes={classes.root} variant="body1">
+        <DividerWithText position={"left"}>
           Enter Business Details
-        </Typography>
+        </DividerWithText>
 
         <div className={classes.checkboxesBlock}>
-          <CustomCheckbox title={"Restaurant"} />
-          <CustomCheckbox title={"Hotel"} />
+          <CustomCheckbox title={"Restaurant"} label="restaurant" />
+          <CustomCheckbox title={"Hotel"} label="hotel" />
         </div>
 
-        {/*<TextField*/}
-        {/*  id="type-of-hotel"*/}
-        {/*  label="Type of hotel"*/}
-        {/*  variant="outlined"*/}
-        {/*  style={{*/}
-        {/*    paddingBottom: "16px",*/}
-        {/*  }}*/}
-        {/*  inputProps={{*/}
-        {/*    style: { padding: "14px 18px" },*/}
-        {/*  }}*/}
-        {/*  // InputLabelProps={{*/}
-        {/*  //   style: {*/}
-        {/*  //     transform: "translate(14px, 16px) scale(1)",*/}
-        {/*  //   },*/}
-        {/*  // }}*/}
-        {/*  InputProps={{*/}
-        {/*    style: {*/}
-        {/*      borderRadius: "50px",*/}
-        {/*    },*/}
-        {/*    className: inputClasses.input,*/}
-        {/*  }}*/}
-        {/*/>*/}
-
-        <FormControl variant="outlined" style={{ paddingBottom: "16px" }}>
-          <InputLabel id="demo-simple-select-outlined-label">
+        <FormControl
+          variant="outlined"
+          style={{ paddingBottom: "16px", borderRadius: "50px" }}
+          classes={{ root: classes.selectRootClasses }}
+        >
+          <InputLabel
+            id="demo-simple-select-outlined-label"
+            classes={{ root: classes.inputLabelClasses }}
+          >
             Type of hotel
           </InputLabel>
           <Select
@@ -147,13 +138,11 @@ export const LoginBusiness = () => {
             label="Type of hotel"
             value={typeOfHotel}
             onChange={handleChange}
-            classes={{ select: classes.selectStyles }}
-            style={{
-              borderRadius: "50px",
+            classes={{
+              select: classes.selectClasses,
             }}
-            InputProps={{
+            inputProps={{
               style: {
-                borderRadius: "50px",
                 padding: "14px",
                 paddingRight: "32px",
               },
@@ -169,102 +158,68 @@ export const LoginBusiness = () => {
         </FormControl>
 
         <TextField
+          classes={{
+            root: classes.inputClasses,
+          }}
+          InputLabelProps={{
+            className: classes.inputLabelClasses,
+          }}
           id="legal-company-name"
           label="Legal Company Name"
           variant="outlined"
-          style={{
-            paddingBottom: "16px",
-          }}
-          inputProps={{
-            style: { padding: "14px 18px" },
-          }}
-          InputProps={{
-            style: {
-              borderRadius: "50px",
-            },
-            className: inputClasses.input,
-          }}
         />
 
         <TextField
+          classes={{
+            root: classes.inputClasses,
+          }}
+          InputLabelProps={{
+            className: classes.inputLabelClasses,
+          }}
           id="dba-name"
           label="Enter DBA Name"
           variant="outlined"
-          style={{
-            paddingBottom: "16px",
-          }}
-          inputProps={{
-            style: { padding: "14px 18px" },
-          }}
-          InputProps={{
-            style: {
-              borderRadius: "50px",
-            },
-            className: inputClasses.input,
-          }}
         />
 
         <TextField
+          classes={{
+            root: classes.inputClasses,
+          }}
+          InputLabelProps={{
+            className: classes.inputLabelClasses,
+          }}
           id="address"
           label="Address"
           variant="outlined"
-          style={{
-            paddingBottom: "16px",
-          }}
-          inputProps={{
-            style: { padding: "14px 18px" },
-          }}
-          InputProps={{
-            style: {
-              borderRadius: "50px",
-            },
-            className: inputClasses.input,
-          }}
         />
 
         <TextField
+          classes={{
+            root: classes.inputClasses,
+          }}
+          InputLabelProps={{
+            className: classes.inputLabelClasses,
+          }}
           id="business-telephone"
           label="Business Telephone"
           variant="outlined"
-          style={{
-            paddingBottom: "16px",
-          }}
-          inputProps={{
-            style: { padding: "14px 18px" },
-          }}
-          InputProps={{
-            style: {
-              borderRadius: "50px",
-            },
-            className: inputClasses.input,
-          }}
         />
 
         <TextField
+          classes={{
+            root: classes.inputClasses,
+          }}
+          InputLabelProps={{
+            className: classes.inputLabelClasses,
+          }}
           id="business-website"
           label="Business Website"
           variant="outlined"
-          style={{
-            paddingBottom: "16px",
-          }}
-          inputProps={{
-            style: { padding: "14px 18px" },
-          }}
-          InputProps={{
-            style: {
-              borderRadius: "50px",
-            },
-            className: inputClasses.input,
-          }}
         />
 
         <Button
-          style={{
-            borderRadius: "50px",
-            padding: "11px 0",
-            fontSize: "14px",
-            fontWeight: 800,
-            textTransform: "none",
+          classes={{
+            root: classes.button,
           }}
           variant="contained"
           color={"primary"}
