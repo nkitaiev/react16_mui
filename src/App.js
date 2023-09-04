@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import "./App.css";
 import { Login } from "./components/Login/Login";
 import { LoginBusiness } from "./components/LoginBussiness/LoginBussiness";
+import { LoginBusinessStep2 } from "./components/LoginBussinessStep2/LoginBussinessStep2";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "business-login",
     element: <LoginBusiness />,
+  },
+  {
+    path: "business-login-step2",
+    element: <LoginBusinessStep2 />,
   },
 ]);
 

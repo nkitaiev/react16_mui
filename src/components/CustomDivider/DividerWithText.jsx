@@ -19,18 +19,15 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     fontSize: 16,
     letterSpacing: "-0.25px",
+    whiteSpace: "nowrap",
   },
 }));
-export const DividerWithText = ({ children, position = "left" }) => {
+export const DividerWithText = ({
+  children,
+  position = "left",
+  textStyles,
+}) => {
   const classes = useStyles();
-
-  const textStyles =
-    position === "left"
-      ? {
-          paddingLeft: 0,
-          whiteSpace: "nowrap",
-        }
-      : null;
 
   return (
     <div className={classes.container}>
